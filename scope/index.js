@@ -11,7 +11,7 @@ const scope = {
       }
 
       function beautifyPerson() {
-        // Log A: personB
+        // Log A: personB 
         
         if (personB.includes('B')) {
           personB = person;
@@ -29,7 +29,13 @@ const scope = {
 
     // Log D: personC
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+     { ‘A’: ‘Ben’ },
+     { ‘B’: ‘CardiB’},
+     { ‘C’: ‘CardiB’},
+     { ‘D’: ‘Paul’}
+   ];
+
     return result;
 
     // Annotation:
@@ -46,22 +52,22 @@ const scope = {
         let number = 28;
       }
 
-      // Log A: number
+      // Log A: number75
 
       function newNumber() {
         number = 64;
 
-        // Log B: number
+        // Log B: number64
       }
 
       newNumber();
 
-      // Log C: number
+      // Log C: number 64
     }
 
     numberFunction();
 
-    // Log D: number
+    // Log D: number 30
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
@@ -114,22 +120,22 @@ const scope = {
         let greeting = 'hello';
       }
 
-      // Log A: greeting
+      // Log A: greeting hi
 
       const newGreeting = ()  => {
         greeting = 'welcome';
 
-        // Log B: greeting
+        // Log B: greeting welcome
       }
 
       newGreeting();
 
-      // Log C: greeting
+      // Log C: greeting welcome
     }
 
     greetingGenerator();
 
-    // Log D: greeting
+    // Log D: greeting howdy
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
@@ -214,25 +220,37 @@ const scope = {
         var fruit = 'mango';
 
         if (fruit) {
-          // Log A: fruit
+          // Log A: fruit (const/let do not hoist, so this case an error would be returned because *temporal dead zone)
           const fruit = 'strawberry';
         }
 
-        // Log B: fruit
+        // Log B: fruit mango
       }
 
-      // Log C: fruit
+      // Log C: fruit mango (var doesn't have block scope)
     }
 
     eatFruit()
 
-    // Log D: fruit
+    // Log D: fruit apple
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // on line 215 we are declaring a global variable, assigning it a value of 'apple'. 
+    //On line 217 we are declaring a function eatFruit.
+    //233 eatFruit is being invoked
+    // inside of eatFruit is an if statement. If fruit variable does not equal 'kiwi', declare variable 
+    //fruit and assign value of 'mango'. 
+    //Then check if fruit variable is true. If so, log fruit. Fruit returns a reference error because
+    //const/let do not hoist. Logging fruit in this block is a a temporal dead zone. 
+    //Now we declare a variable 'fruit' and assign to the value 'strawberry'.
+    //outside of this block we log fruit. Mango is returned because we are logging within the first if block.
+    // outside of the if blocks we log fruit inside of the entire function. Mango is returned 
+    //because var does not have block scope.
+    //Next we log fruit in the global scope. Apple is returned. Our global fruit variable has not been
+    //reassigned by any functions.
   },
 
   exerciseH() {
@@ -477,11 +495,23 @@ const scope = {
     putOnShoe();
     // Log C: shoe
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    {'b': 'flipflop'},
+    {'a': 'undefined'},
+    {'c': 'flipflop'},
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // on line 469 we declare a global variable named shoe and assign it to 
+    //equal flipflop
+    //Then we declare a gobal function named putOnShoe, but we skip down to line 469
+    //because it hasn't been invoked yet. On line 469 we log the value of shoe, which
+    //is 'flipflop' at this point in time. Then we go ahead and invoke our putOnShoe function
+    // and when we try to log shoe within our function, we get undefined because our
+    //shoe declaration on line 473 is hoisted to the top of that function scope.
+    //Once we've finished executing putOnShoe, we go back down to line 478 and log
+    //shoe again which will give us flipflop
   }
 }
 
