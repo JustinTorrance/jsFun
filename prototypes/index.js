@@ -106,24 +106,33 @@ const result = instructors.map((instructor) => {
 
 
 // DATASET: mods from ./datasets/mods
+const mods = [
+  { mod: 1, students: 27, instructors: 3 },
+  { mod: 2, students: 33, instructors: 3 },
+  { mod: 3, students: 20, instructors: 2 },
+  { mod: 4, students: 16, instructors: 2 }
+];
+
 const modPrompts = {
   studentsPerMod() {
-    // Return an array of objects where the keys are mod (the number of the module)
-    // and studentsPerInstructor (how many students per instructor there are for that mod) e.g.
-    // [
-    //   { mod: 1, studentsPerInstructor: 9 },
-    //   { mod: 2, studentsPerInstructor: 11 },
-    //   { mod: 3, studentsPerInstructor: 10 },
-    //   { mod: 4, studentsPerInstructor: 8 }
-    // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = mods.map((currentValue) => {
+      studentsObj = {
+       mod: currentValue.mod,
+       studentsPerInstructor: currentValue.students / currentValue.instructors
+      }
+    return studentsObj;
+    })
     return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
   }
 };
+modPrompts.studentsPerMod();
+
+
+//ANNOTATION
+//GIVEN array
+//NEED array
+//USE: Map
 
 
 
@@ -318,25 +327,26 @@ const result = cakes.filter((currentCake) => {
 
 
 // DATASET: pie from ./datasets/pie
+
 const piePrompts = {
   howManyIngredients() {
-    // The bakery needs to make more rhubarb pies in order to meet the
-    // desiredInventoryCount. Programmatically determine how many more pies
-    // need to be made, and return an object of the total number of ingredients we need
-    // we need to buy in order to make the remaining pies. e.g.:
-    // {
-    //   cinnamon: 50,
-    //   sugar: 100
-    // }
+    let piesNeeded = pie.desiredInventoryCount - pie.inventoryCount;
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = Object.keys(pie.ingredients).reduce((obj, key) => {
+      obj[key] = pie.ingredients[key] * piesNeeded;
+      return obj;
+    }, {})
+
     return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
   }
-};
+}
+piePrompts.howManyIngredients()
 
+//         // Annotation:
+//     //Dataset being given: 1 object, pie
+//     //What is wanted back: single value, object 
+//     // Method to use: reduce
+//   }
 
 
 
@@ -355,21 +365,32 @@ const piePrompts = {
 // DATASET: clubs from ./datasets/clubs
 const clubPrompts = {
   membersBelongingToClubs() {
-    // Create an object whose keys are the names of people, and whose values are
-    // arrays that include the names of the clubs that person is a part of. e.g. 
-    // {
-    //   Louisa: ['Drama', 'Art'],
-    //   Pam: ['Drama', 'Art', 'Chess'],
-    //   ...etc
-    // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = clubs.reduce((clubObj, club) => {
+      club.members.forEach((member) => {     
+        //if member doesn't exist as a key in our object (obj can't have 2 of the same key names)
+        if (!clubObj[member]) {
+          //make each unique member a key in clubObj(value will be an arary)
+          clubObj[member] = [];
+        }
+        if (club.members.includes(member)) {
+          clubObj[member].push(club.club)
+        }
+      })
+      return clubObj;
+    }, {})
+  console.log(result)
+    
     return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
   }
 };
+clubPrompts.membersBelongingToClubs();
+
+
+
+//1. Dataset given: 1 array of objects
+//2. Return an object with values in an array
+//3. Prototype methods: reduce
 
 
 

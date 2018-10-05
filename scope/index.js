@@ -39,7 +39,14 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // On lines 3-5 we are declaring global variables and assigning values of a string. 
+    // On line 7 we are declaring a function changePerson.
+    // On line 28 we are invoking the function changePerson.
+    // Within our function we have a conditional. If personA is equal to Paul (which it is), then we will reassign person to CardiB.
+    // Since person does not exist as a variable within our block, function, or global scopes, the interpreter
+    // will create that variable globally. 
+    // Next we invoke our function beautifyPerson. On line 13 we declare beautifyPerson. Inside we have a conditional.
+    //
   },
 
   exerciseB() {
@@ -69,7 +76,12 @@ const scope = {
 
     // Log D: number 30
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+     {‘A’: 75},
+     {‘B’: 64},
+     {‘C’: 64},
+     {‘D’: 30}
+   ];
     return result;
 
     // Annotation:
@@ -103,7 +115,12 @@ const scope = {
 
     // Log D: greeting
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+     {‘A’: ‘Yo’},
+     {‘B’: ‘Hey’},
+     {‘C’: ‘Hey’},
+     {‘D’: ‘Hello’}
+   ];
     return result;
 
     // Annotation:
@@ -137,7 +154,12 @@ const scope = {
 
     // Log D: greeting howdy
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+     {‘A’: ‘hi’},
+     {‘B’: ‘welcome’},
+     {‘C’: ‘welcome’},
+     {‘D’: ‘howdy’}
+   ];
     return result;
 
     // Annotation:
@@ -169,7 +191,12 @@ const scope = {
 
     // Log D: name
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+     {‘C’: ‘Brittany’},
+     {‘A’: ‘Nathaniel’},
+     {‘B’: ‘Nathaniel’},
+     {‘D’: ‘Brittany’}
+   ];
     return result;
 
     // Annotation:
@@ -204,7 +231,14 @@ const scope = {
 
     // Log E: dog
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result =   
+    [   
+      {‘A’: ‘Spot’},
+      {‘B’: ‘Spot’},
+      {‘C’: ‘Biscuit’},
+      {‘D’: ‘Biscuit’},
+      {‘E’: ‘Biscuit’}
+   ];
     return result;
 
     // Annotation:
@@ -234,7 +268,12 @@ const scope = {
 
     // Log D: fruit apple
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    {'A': 'referenceError'},
+    {'B': 'mango'},
+    {'C': 'mango'},
+    {'D': 'apple'}
+    ];
     return result;
 
     // Annotation:
@@ -286,7 +325,13 @@ const scope = {
 
     fn1();
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    {‘A’: 4},
+    {‘D’: 9},
+    {‘E’: 10},
+    {‘B’: 9},
+    {‘C’: 4}
+  ];
     return result;
 
     // Annotation:
